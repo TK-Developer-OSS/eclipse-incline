@@ -163,6 +163,14 @@ GitHub Copilot for Eclipse は不採用 (2024-09 以降必須・GitHub 認証が
   - Java のデバッグを含む手順 (run-debug) は、デバッガが接続待ちのポートを開くので、Windows ファイアウォールの確認が出ることがある (2026-09-30 に 1 回出た)
   - 依存 (MANIFEST.MF) を変えたあとに古い構成が残っていると、NoClassDefFoundError になる。run.sh は構成を毎回消している
 
+## リポジトリとアップデートサイト
+- GitHub: https://github.com/TK-Developer-OSS/eclipse-incline 。git のルートは親の \\rocky9\****\cline\eclipse (ワークスペースの .metadata と bin は .gitignore で除く)。作業ブランチは dev
+- ルートの構成: プラグイン (このフォルダ) / com.tkdevelopeross.eclipse.incline.feature (フィーチャー) / com.tkdevelopeross.eclipse.incline.site (category.xml と build.sh) / updatesite (ビルド済みの p2 リポジトリ。コミットする)
+- ビルド: `bash com.tkdevelopeross.eclipse.incline.site/build.sh` (ルートで実行)。javac でコンパイル → jar → インストール済み Eclipse の p2 パブリッシャ (FeaturesAndBundlesPublisher と CategoryPublisher) で updatesite/ を作り直す。qualifier は UTC の日時 (vYYYYMMDD-HHMM)。作業フォルダは D:\Temp\incline-selftest\build (Avast の例外の中)
+  - 実行中に lsp4e などの「Unresolved requirement」が大量に出るが、パブリッシャとは関係のないバンドルの起動失敗なので無視してよい
+  - 4.17 の素の Platform には gson がないことがあるので、Orbit の com.google.gson 2.10.1 もサイトに入れている (フィーチャーには含めない。p2 が Import-Package を解決するのに使う)
+- インストール URL: https://raw.githubusercontent.com/TK-Developer-OSS/eclipse-incline/dev/updatesite
+
 ## メモ
 - このフォルダ (\\rocky9\****\cline\eclipse\com.tkdevelopeross.eclipse.incline) がプラグインのプロジェクト。VS Code もここを開く (フォルダ名は com.tk-developer-oss.eclipse-incline から変更する。変更が済んだらこの括弧書きは消す)
   - 親の \\rocky9\****\cline\eclipse は Eclipse のワークスペース (.metadata あり)。プロジェクトは PDE のウィザードで作成済み
