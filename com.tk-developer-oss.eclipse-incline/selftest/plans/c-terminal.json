@@ -1,0 +1,17 @@
+{
+  "output": "${IT}/out/c-terminal.jsonl",
+  "timeoutSeconds": 300,
+  "steps": [
+    {"window": [1280, 860]},
+    {"tool": "import_project", "args": {"path": "${IT}/ws/cdemo"}},
+    {"tool": "execute_command", "args": {"commandId": "org.eclipse.tm.terminal.connector.local.command.launch"}},
+    {"tool": "send_to_terminal", "args": {"text": "cd /d ${IT}/ws/cdemo"}},
+    {"tool": "send_to_terminal", "args": {"text": "set PATH=D:\\msys64\\ucrt64\\bin;D:\\msys64\\usr\\bin;%PATH%"}},
+    {"tool": "send_to_terminal", "args": {"text": "make clean && make", "waitSeconds": 60}},
+    {"tool": "send_to_terminal", "args": {"text": "set NoDefaultCurrentDirectoryInExePath"}},
+    {"tool": "send_to_terminal", "args": {"text": ".\\hello.exe one"}},
+    {"tool": "send_to_terminal", "args": {"text": "echo exit code %ERRORLEVEL%"}},
+    {"screenshot": "${IT}/out/c-terminal.png"},
+    {"exit": true}
+  ]
+}

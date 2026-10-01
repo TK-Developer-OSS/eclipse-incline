@@ -1,0 +1,16 @@
+{
+  "output": "${IT}/out/resume.jsonl",
+  "timeoutSeconds": 420,
+  "steps": [
+    {"window": [1280, 860]},
+    {"tool": "import_project", "args": {"path": "${IT}/ws/demo"}},
+    {"chat": "私の好きな果物はみかんです。1 から 8 までを、1 行に 1 つずつ日本語で数えてください。"},
+    {"waitChat": 150},
+    {"chatCommand": "new"},
+    {"chatCommand": "resume"},
+    {"chat": "私の好きな果物は何だと言いましたか。一言で答えてください。"},
+    {"waitChat": 150},
+    {"screenshot": "${IT}/out/resume.png"},
+    {"exit": true}
+  ]
+}

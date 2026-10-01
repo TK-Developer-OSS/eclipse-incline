@@ -1,0 +1,32 @@
+{
+  "output": "${IT}/out/c-debug.jsonl",
+  "timeoutSeconds": 420,
+  "steps": [
+    {"window": [1280, 860]},
+    {"tool": "import_project", "args": {"path": "${IT}/ws/cdemo"}},
+    {"tool": "set_launch_configuration", "args": {"name": "c-make", "type": "org.eclipse.ui.externaltools.ProgramLaunchConfigurationType", "attributes": {"org.eclipse.ui.externaltools.ATTR_LOCATION": "D:\\msys64\\usr\\bin\\make.exe", "org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY": "${IT}/ws/cdemo", "org.eclipse.debug.core.environmentVariables": {"PATH": "D:\\msys64\\ucrt64\\bin;D:\\msys64\\usr\\bin;${env_var:PATH}"}}}},
+    {"tool": "launch", "args": {"name": "c-make", "waitSeconds": 90}},
+    {"tool": "set_launch_configuration", "args": {"name": "c-debug", "type": "org.eclipse.cdt.launch.applicationLaunchType", "attributes": {"org.eclipse.cdt.launch.PROGRAM_NAME": "${IT}/ws/cdemo/hello.exe", "org.eclipse.cdt.launch.PROJECT_ATTR": "", "org.eclipse.cdt.launch.WORKING_DIRECTORY": "${IT}/ws/cdemo", "org.eclipse.cdt.dsf.gdb.DEBUG_NAME": "D:\\msys64\\ucrt64\\bin\\gdb.exe", "org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN": true, "org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN_SYMBOL": "main", "org.eclipse.debug.core.environmentVariables": {"PATH": "D:\\msys64\\ucrt64\\bin;${env_var:PATH}"}}}},
+    {"tool": "launch", "args": {"name": "c-debug", "mode": "debug", "waitSeconds": 5}},
+    {"sleep": 2000},
+    {"tool": "read_dialog"},
+    {"tool": "click", "args": {"target": "dialog", "label": "Remember my decision"}},
+    {"tool": "click", "args": {"target": "dialog", "label": "Switch"}},
+    {"sleep": 2000},
+    {"tool": "get_launches"},
+    {"tool": "get_debug_state"},
+    {"tool": "debug_step", "args": {"action": "step_over"}},
+    {"tool": "debug_step", "args": {"action": "step_into"}},
+    {"tool": "debug_step", "args": {"action": "step_over"}},
+    {"tool": "debug_step", "args": {"action": "step_over"}},
+    {"tool": "get_debug_state"},
+    {"screenshot": "${IT}/out/c-debug.png"},
+    {"tool": "debug_step", "args": {"action": "step_return"}},
+    {"tool": "get_debug_state"},
+    {"tool": "debug_step", "args": {"action": "resume"}},
+    {"sleep": 3000},
+    {"tool": "get_launches"},
+    {"tool": "get_console_output"},
+    {"exit": true}
+  ]
+}

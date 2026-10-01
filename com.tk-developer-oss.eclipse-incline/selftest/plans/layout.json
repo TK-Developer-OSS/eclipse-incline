@@ -1,0 +1,12 @@
+{
+  "output": "${IT}/out/layout.jsonl",
+  "timeoutSeconds": 240,
+  "steps": [
+    {"window": [1280, 860]},
+    {"tool": "get_workbench_state"},
+    {"tool": "open_perspective", "args": {"perspectiveId": "org.eclipse.jdt.ui.JavaPerspective"}},
+    {"tool": "get_workbench_state"},
+    {"screenshot": "${IT}/out/layout.png"},
+    {"exit": true}
+  ]
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.tkdevelopeross.eclipse.incline.feature"
+      label="Incline (Claude for Eclipse)"
+      version="1.0.0.qualifier"
+      provider-name="TK-DEVELOPER-OSS">
+
+   <description url="https://github.com/TK-Developer-OSS/eclipse-incline">
+      Claude Code をチャットビューとして Eclipse に組み込み、Eclipse 内の MCP サーバ経由で Claude が Eclipse のビュー・ダイアログ・コマンド・起動/デバッグを見て操作できるようにするプラグイン。
+      claude CLI (Claude Code) が別途必要。
+   </description>
+
+   <plugin
+         id="com.tkdevelopeross.eclipse.incline"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

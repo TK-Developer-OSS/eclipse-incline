@@ -1,0 +1,26 @@
+{
+  "output": "${IT}/out/menus.jsonl",
+  "timeoutSeconds": 300,
+  "steps": [
+    {"window": [1280, 860]},
+    {"tool": "import_project", "args": {"path": "${IT}/ws/demo"}},
+    {"tool": "main_menu"},
+    {"tool": "main_menu", "args": {"menuPath": ["Project"]}},
+    {"tool": "main_menu", "args": {"menuPath": ["File", "New"]}},
+    {"tool": "main_menu", "args": {"menuPath": ["No such menu"]}},
+    {"tool": "show_view", "args": {"viewId": "org.eclipse.ui.views.ProblemView"}},
+    {"tool": "view_menu", "args": {"viewId": "org.eclipse.ui.views.ProblemView"}},
+    {"tool": "view_menu", "args": {"viewId": "org.eclipse.ui.navigator.ProjectExplorer"}},
+    {"tool": "view_menu", "args": {"viewId": "org.eclipse.ui.navigator.ProjectExplorer", "menuPath": ["Projects Presentation"]}},
+    {"tool": "main_menu", "args": {"menuPath": ["Help", "About"]}},
+    {"tool": "read_dialog"},
+    {"tool": "click", "args": {"target": "dialog", "label": "Close"}},
+    {"tool": "select_item", "args": {"target": "org.eclipse.ui.navigator.ProjectExplorer", "path": ["demo", "hello.txt"]}},
+    {"tool": "context_menu", "args": {"target": "org.eclipse.ui.navigator.ProjectExplorer"}},
+    {"tool": "context_menu", "args": {"target": "org.eclipse.ui.navigator.ProjectExplorer", "menuPath": ["Open With"]}},
+    {"tool": "context_menu", "args": {"target": "org.eclipse.ui.navigator.ProjectExplorer", "menuPath": ["Properties"]}},
+    {"tool": "read_dialog", "args": {"maxItems": 30}},
+    {"tool": "click", "args": {"target": "dialog", "label": "Cancel"}},
+    {"exit": true}
+  ]
+}

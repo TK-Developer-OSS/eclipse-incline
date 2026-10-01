@@ -1,0 +1,7 @@
+# Eclipse のワークスペースのメタデータ
+.metadata/
+# コンパイル結果
+bin/
+*.class
+*.o
+*.exe

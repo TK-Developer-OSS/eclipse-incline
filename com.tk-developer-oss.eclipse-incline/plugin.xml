@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="com.tkdevelopeross.eclipse.incline.category"
+            name="Incline">
+      </category>
+      <view
+            id="com.tkdevelopeross.eclipse.incline.chatView"
+            name="Claude Chat"
+            category="com.tkdevelopeross.eclipse.incline.category"
+            class="com.tkdevelopeross.eclipse.incline.ui.ChatView"
+            restorable="true">
+      </view>
+   </extension>
+   <!-- どのパースペクティブでも、チャットビューを下の段 (Problems・Search・Console と同じ場所) にタブとして置く -->
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <view
+               id="com.tkdevelopeross.eclipse.incline.chatView"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="stack"
+               visible="true">
+         </view>
+         <viewShortcut
+               id="com.tkdevelopeross.eclipse.incline.chatView">
+         </viewShortcut>
+      </perspectiveExtension>
+   </extension>
+   <!-- 起動時の処理。今は自己テスト (システムプロパティ incline.selftest を付けて起動したときだけ動く) だけ -->
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.tkdevelopeross.eclipse.incline.selftest.SelfTest">
+      </startup>
+   </extension>
+</plugin>

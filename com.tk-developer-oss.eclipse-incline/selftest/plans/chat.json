@@ -1,0 +1,19 @@
+{
+  "output": "${IT}/out/chat.jsonl",
+  "timeoutSeconds": 480,
+  "steps": [
+    {"window": [1280, 860]},
+    {"tool": "import_project", "args": {"path": "${IT}/ws/demo"}},
+    {"chat": "demo プロジェクトの hello.txt の 2 行目を「second line (edited)」に書き換えてください。ほかのことはしないでください。"},
+    {"waitOwnDialog": 120},
+    {"sleep": 1500},
+    {"screenshot": "${IT}/out/chat-permission.png", "of": "own"},
+    {"pressOwnDialog": "許可"},
+    {"waitChat": 150},
+    {"chat": "Eclipse の Problems ビューに今出ている警告を、Eclipse のツールで調べて教えてください。"},
+    {"waitChat": 150},
+    {"sleep": 500},
+    {"screenshot": "${IT}/out/chat-chat.png"},
+    {"exit": true}
+  ]
+}

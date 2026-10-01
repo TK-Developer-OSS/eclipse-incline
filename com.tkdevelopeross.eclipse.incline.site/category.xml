@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="com.tkdevelopeross.eclipse.incline.feature">
+      <category name="incline"/>
+   </feature>
+   <category-def name="incline" label="Incline (Claude for Eclipse)"/>
+</site>
